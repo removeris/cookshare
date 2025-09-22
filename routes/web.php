@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 Class Recipe {
     private $id;
@@ -20,6 +21,7 @@ Class Recipe {
         $this->description = $description;
         $this->ingredients = [];
         $this->instructions = [];
+        $this->dateCreated = Carbon::now();
     }
 
     public function getId() {

@@ -19,7 +19,7 @@
         .searchbox-wrapper {
             display: flex;
             padding: 5px 10px;
-            border: solid 1px orange;
+            border: solid 2px orange;
             border-radius: 20px;
             background-color: white;
         }
@@ -34,7 +34,7 @@
         }
 
         .searchbox-wrapper:has(input:focus) {
-            border: solid 2px orange;
+            border: solid 3px orange;
         }
 
         img {
