@@ -78,8 +78,16 @@ Class Ingredient {
 }
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('index');
+
+Route::get('/login', function() {
+    return view('login');
+})->name('login');
+
+Route::get('/register', function() {
+    return view('register');
+})->name('register');
 
 Route::prefix('recipes')->name('recipes.')->group(function() {
     
@@ -119,7 +127,7 @@ Route::prefix('recipes')->name('recipes.')->group(function() {
         // Using session storage to be able to access the same variable accross redirects
         $request->session()->put('recipes', $recipes);
 
-        return redirect()->route('recipes.index');
+        return redirect()->route('index');
     })->name('create');
 
     Route::get('/search', function(Request $request) {

@@ -46,6 +46,10 @@
             z-index: 9999;
         }
 
+        .list-container {
+            padding: 30px;
+        }
+
     </style>
 </head>
 
@@ -62,10 +66,13 @@
         </form>
     </div>
     
-    @isset($_GET['keyword'])
-
-        @foreach ($recipes as $recipe)
-            <a href="{{ URL::route('recipes.show', ['id' => $recipe->getId()]) }}">{{ $recipe->getTitle() }}</a>
-        @endforeach
-    @endisset
+    <div class="list-container">
+        @isset($_GET['keyword'])
+            @forelse ($recipes as $recipe)
+                <a href="{{ URL::route('recipes.show', ['id' => $recipe->getId()]) }}">{{ $recipe->getTitle() }}</a>
+            @empty
+                <p>No recipes were found..</p>
+            @endforelse
+        @endisset
+    </div>
 @endsection

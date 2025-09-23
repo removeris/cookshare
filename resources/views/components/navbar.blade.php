@@ -33,12 +33,12 @@
 
 <nav>
         <div class="left-container">
-            <a href="{{ URL::route('recipes.index') }}">CookShare</a>
+            <a href="{{ URL::route('index') }}">CookShare</a>
         </div>
         <div class="right-container">
             <a href="{{ URL::route('recipes.search') }}">Search</a>
             <a href="{{ URL::route('recipes.create') }}">Create</a>
-            <a href="#">Register</a>
-            <a href="#">Login</a>
+            <a href="{{ URL::route('register') }}">Register</a>
+            <a href="{{ URL::route('login') }}">Login</a>
         </div>
 </nav>

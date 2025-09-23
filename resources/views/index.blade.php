@@ -41,22 +41,4 @@
         <h3>A recipe has no soul. <span>You</span>, as the cook, must bring <span>soul</span> to the recipe</h3>
         <img src="https://www.gourmetfoodparlour.com/img/containers/assets/full-width-slider/full-width-slider-tapasselection.jpg/40d6d1da2168cf4fb37f76cc53f00ea3.webp">
     </div>
-    @foreach($recipes as $recipe)
-
-        <h4>{{ $recipe->getTitle() }}</h4>
-        <p>{{ $recipe->getDescription() }}</p>
-        <h5>Ingredients</h5>
-        <ul>
-            @foreach ($recipe->getIngredients() as $ingredient)
-                <li>{{ $ingredient->getName() }} {{ $ingredient->getQuantity() }} {{ $ingredient->getUnits() }}</li> 
-            @endforeach
-        </ul>
-        <h5>Instructions</h5>
-        <ol>
-            @foreach ($recipe->getInstructions() as $instruction)
-                <li>{{ $instruction }}</li> 
-            @endforeach
-        </ol>
-
-    @endforeach
 @endsection
