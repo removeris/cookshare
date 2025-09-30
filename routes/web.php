@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Http\Controllers\RecipeController;
 
 Class Recipe {
     private $id;
@@ -77,17 +78,9 @@ Class Ingredient {
     
 }
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::resource('recipes', RecipeController::class);
 
-Route::get('/login', function() {
-    return view('login');
-})->name('login');
-
-Route::get('/register', function() {
-    return view('register');
-})->name('register');
+/*
 
 Route::prefix('recipes')->name('recipes.')->group(function() {
     
@@ -95,6 +88,9 @@ Route::prefix('recipes')->name('recipes.')->group(function() {
         $recipes = $request->session()->get('recipes', []);
         return view('recipes.index', ['recipes' => $recipes]);
     })->name('index');
+
+    Route::get('/', [RecipeController::class, 'index'])->name('index');
+    Route
 
     Route::get('/create', function() {
         return view('recipes.create');
@@ -158,3 +154,4 @@ Route::prefix('recipes')->name('recipes.')->group(function() {
     })->name('show');
 
 });
+*/
