@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\RecipeController;
 
+/*
 Class Recipe {
     private $id;
     private $title;
@@ -77,6 +78,10 @@ Class Ingredient {
     }
     
 }
+*/
+Route::get('/', function() {
+    return view('index');
+})->name('index');
 
 Route::resource('recipes', RecipeController::class);
 

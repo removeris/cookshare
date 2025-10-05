@@ -49,7 +49,7 @@
 
     </script>
 
-    <form method="post" action="/recipes/create">
+    <form method="post" action="{{ route('recipes.store') }}">
         @csrf
         <label for="title">Enter recipe title</label><br>
         <input type="text" name="title"><br>

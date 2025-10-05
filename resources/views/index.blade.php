@@ -6,7 +6,7 @@
     <style>
 
         .hero {
-            margin-top: -25px;
+            margin-top: -45px;
         }
 
         img {
@@ -20,6 +20,7 @@
         }
 
         h3 {
+            padding: 0px 15px;
             position: relative;
             text-align: center;
             color: white;
@@ -38,7 +39,7 @@
 
 @section('content')
     <div class="hero">
-        <h3>A recipe has no soul. <span>You</span>, as the cook, must bring <span>soul</span> to the recipe</h3>
+        <h3>A recipe has no soul. <span>You</span>, as the cook, must bring <span>soul</span> to the recipe.</h3>
         <img src="https://www.gourmetfoodparlour.com/img/containers/assets/full-width-slider/full-width-slider-tapasselection.jpg/40d6d1da2168cf4fb37f76cc53f00ea3.webp">
     </div>
 @endsection
