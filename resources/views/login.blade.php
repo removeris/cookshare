@@ -33,8 +33,8 @@
 
 <form method="post" action="{{ route('login') }}">
     @csrf
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
+    <input type="email" name="email" placeholder="Email">
+    <input type="password" name="password" placeholder="Password">
     <button type="submit">Log In</button>
 </form>
 @endsection

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -14,6 +15,9 @@ Route::resource('recipes', RecipeController::class);
 
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+
+Route::get('/register', [RegistrationController::class, 'registrationForm'])->name('register');
+Route::post('/register', [RegistrationController::class, 'registerNewUser'])->name('register');
 
 /*
 

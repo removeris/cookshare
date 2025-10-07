@@ -19,14 +19,12 @@
         }
 
         h3 {
-            margin-top: 0;
             padding: 0px 15px;
             text-align: center;
-            position: relative;
+            position: absolute;
             color: white;
+            line-height: 1.5em;
             font-size: 1.5em;
-            line-height: 3em;
-            margin-top: -3em;
             z-index: 2;
             top: calc((250px + 3em) / 2);
             user-select: none;
@@ -44,4 +42,8 @@
         <h3>A recipe has no soul. <span>You</span>, as the cook, must bring <span>soul</span> to the recipe.</h3>
         <img src="https://www.gourmetfoodparlour.com/img/containers/assets/full-width-slider/full-width-slider-tapasselection.jpg/40d6d1da2168cf4fb37f76cc53f00ea3.webp">
     </div>
+
+    @auth
+        <h4>You are logged in!</h4>
+    @endauth
 @endsection

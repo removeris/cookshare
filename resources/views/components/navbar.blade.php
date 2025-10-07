@@ -38,7 +38,7 @@
     <div class="right-container">
         <?php //<a href="{{ URL::route('recipes.search') }}">Search</a> ?>
         <a href="{{ URL::route('recipes.create') }}">Create</a>
-        <?php //<a href="{{ URL::route('register') }}">Register</a> ?>
+        <a href="{{ URL::route('register') }}">Register</a>
         <a href="{{ URL::route('login') }}">Login</a>
     </div>
 </nav>

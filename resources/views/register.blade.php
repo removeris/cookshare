@@ -30,11 +30,11 @@
 
 @section('content')
 
-<form method="post" action="">
+<form method="post" action="{{ route('register') }}">
     @csrf
-    <input type="text" placeholder="Name">
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
+    <input type="text" name="name" placeholder="Name">
+    <input type="email" name="email" placeholder="Email">
+    <input type="password" name="password" placeholder="Password">
     <button type="submit">Register</button>
 </form>
 @endsection
