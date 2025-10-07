@@ -15,6 +15,7 @@ Route::resource('recipes', RecipeController::class);
 
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/logout', [LoginController::class, 'logoutUser'])->name('logout');
 
 Route::get('/register', [RegistrationController::class, 'registrationForm'])->name('register');
 Route::post('/register', [RegistrationController::class, 'registerNewUser'])->name('register');

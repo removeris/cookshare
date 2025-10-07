@@ -42,8 +42,4 @@
         <h3>A recipe has no soul. <span>You</span>, as the cook, must bring <span>soul</span> to the recipe.</h3>
         <img src="https://www.gourmetfoodparlour.com/img/containers/assets/full-width-slider/full-width-slider-tapasselection.jpg/40d6d1da2168cf4fb37f76cc53f00ea3.webp">
     </div>
-
-    @auth
-        <h4>You are logged in!</h4>
-    @endauth
 @endsection
