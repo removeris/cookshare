@@ -1,7 +1,7 @@
 <style>
     .left-container a {
         font-family: 'MonteCarlo', sans-serif;
-        font-size: 1.75em;
+        font-size: 2em;
     }
 
     .left-container a,
@@ -38,7 +38,7 @@
     <div class="right-container">
         <?php //<a href="{{ URL::route('recipes.search') }}">Search</a> ?>
         <a href="{{ URL::route('recipes.create') }}">Create</a>
-        <?php /*<a href="{{ URL::route('register') }}">Register</a>
-        <a href="{{ URL::route('login') }}">Login</a> */?>
+        <?php //<a href="{{ URL::route('register') }}">Register</a> ?>
+        <a href="{{ URL::route('login') }}">Login</a>
     </div>
 </nav>

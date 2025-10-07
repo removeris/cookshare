@@ -31,7 +31,7 @@
 
 @section('content')
 
-<form method="post" action="">
+<form method="post" action="{{ route('login') }}">
     @csrf
     <input type="email" placeholder="Email">
     <input type="password" placeholder="Password">

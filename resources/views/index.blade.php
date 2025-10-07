@@ -6,11 +6,10 @@
     <style>
 
         .hero {
-            margin-top: -45px;
+            height: 250px;
         }
 
         img {
-            position: relative;
             object-fit: cover;
             object-position: 50% 60%;
             width: 100%;
@@ -20,13 +19,16 @@
         }
 
         h3 {
+            margin-top: 0;
             padding: 0px 15px;
-            position: relative;
             text-align: center;
+            position: relative;
             color: white;
-            font-size: 25px;
+            font-size: 1.5em;
+            line-height: 3em;
+            margin-top: -3em;
             z-index: 2;
-            top: calc(250px / 2);
+            top: calc((250px + 3em) / 2);
             user-select: none;
         }
 
