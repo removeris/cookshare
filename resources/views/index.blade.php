@@ -20,13 +20,16 @@
 
         h3 {
             padding: 0px 15px;
-            text-align: center;
             position: absolute;
             color: white;
             line-height: 1.5em;
             font-size: 1.5em;
             z-index: 2;
             top: calc((250px + 3em) / 2);
+            left: 0;
+            right: 0;
+            margin-inline: auto;
+            width: fit-content;
             user-select: none;
         }
 

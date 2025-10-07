@@ -5,7 +5,6 @@
         }
     </style>
 </head>
-
 <h4>{{ $recipe->title }}</h4>
 <p>{{ $recipe->description }}</p>
 <h5>Ingredients</h5>

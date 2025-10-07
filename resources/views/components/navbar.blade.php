@@ -39,7 +39,6 @@
         <?php //<a href="{{ URL::route('recipes.search') }}">Search</a> ?>
         <a href="{{ URL::route('recipes.create') }}">Create</a>
         @guest
-        <a href="{{ URL::route('register') }}">Register</a>
         <a href="{{ URL::route('login') }}">Login</a>
         @endguest
 
