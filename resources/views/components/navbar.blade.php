@@ -7,7 +7,7 @@
     .left-container a,
     .right-container a {
         text-decoration: none;
-        color: black;
+        color: #F0A500;
     }
 
     .right-container {

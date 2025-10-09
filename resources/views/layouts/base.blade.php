@@ -13,6 +13,10 @@
             box-sizing: border-box;
             font-family: 'Josefin Sans';
         }
+
+        body {
+            background-color: #1B1A17;
+        }
     </style>
 </head>
 <body>

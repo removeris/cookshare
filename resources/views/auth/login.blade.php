@@ -14,6 +14,7 @@
             margin: auto;
             margin-top: 90px;
             overflow: hidden;
+            background-color: #E6D5B8;
         }
 
         form, img {
@@ -26,11 +27,20 @@
             flex-direction: column;
             gap: 10px;
             align-items: center;
+            
         }
 
         h2 {
             line-height: 3em;
             text-align: center;
+        }
+
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px #E6D5B8 inset !important;
         }
 
         input {
@@ -39,10 +49,7 @@
             line-height: 2em;
             width: 100%;
             padding: 5px 10px;
-        }
-
-        input:first-of-type('submit') {
-
+            background-color: transparent;
         }
 
         input:focus {
@@ -68,10 +75,11 @@
             border-radius: 5px;
             border: none;
             outline: none;
-            background-color: hsla(44, 100%, 44%, 1.00);
+            background-color: #F0A500;
             color: white;
             font-size: 1em;
             margin: 20px 0;
+            transition: background-color 0.15s ease-in-out;
         }
 
         button:hover {
@@ -83,6 +91,12 @@
             text-decoration: underline;
             color: black;
             font-weight: bold;
+        }
+
+        .container img {
+            object-fit: cover;
+            height: 560px;
+            filter: brightness(70%);
         }
     </style>
 </head>
