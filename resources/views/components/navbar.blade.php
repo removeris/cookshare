@@ -37,12 +37,12 @@
     </div>
     <div class="right-container">
         <?php //<a href="{{ URL::route('recipes.search') }}">Search</a> ?>
-        <a href="{{ URL::route('recipes.create') }}">Create</a>
         @guest
         <a href="{{ URL::route('login') }}">Login</a>
         @endguest
-
+        
         @auth
+        <a href="{{ URL::route('recipes.create') }}">Create</a>
         <a href="{{ URL::route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit()">Logout</a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf

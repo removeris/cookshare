@@ -14,7 +14,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        return "hello world!";
+        return view('recipes.index');
     }
 
     /**
@@ -30,7 +30,6 @@ class RecipeController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-
         $request->validate([
             'title' => 'required',
             'description' => 'required',

@@ -22,6 +22,7 @@ class UserAuth
             return redirect()->route('login');
         }
 
+
         return $next($request);
     }
 }
