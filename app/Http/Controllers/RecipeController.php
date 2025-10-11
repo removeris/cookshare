@@ -6,6 +6,8 @@ use App\Models\Recipe;
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class RecipeController extends Controller
 {
@@ -46,6 +48,7 @@ class RecipeController extends Controller
         $recipe->title = $request->input('title');
         $recipe->description = $request->input('description');
         $recipe->instructions = $request->input('instruction')[0];
+        $recipe->user_id = Auth::user()->id;
         
         foreach($request->input('instruction') as $instruction) {
             $recipe->instructions = $recipe->instructions . ' ' . $instruction;
@@ -78,7 +81,16 @@ class RecipeController extends Controller
      */
     public function show(string $id)
     {
-        return view('recipes.show', ['recipe' => Recipe::find($id)]);
+
+        $recipe = Recipe::find($id);
+     
+        if(!isset($recipe)) {
+            return redirect()->route('index');
+        }
+
+        $authorName = User::find($recipe->user_id)->name;
+
+        return view('recipes.show', ['recipe' => Recipe::find($id), 'authorName' => $authorName]);
     }
 
     /**
@@ -103,5 +115,14 @@ class RecipeController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function userRecipes(string $userId) {
+        if($userId == 'currentUser') {
+            $userId = Auth::user()->id;
+        }
+        $recipes = Recipe::with('user')->where('user_id', $userId)->get();
+
+        return view('recipes.user', ['recipes' => $recipes]);
     }
 }

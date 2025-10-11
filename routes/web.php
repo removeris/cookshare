@@ -12,12 +12,11 @@ Route::get('/', function() {
 
 //Route::resource('recipes', RecipeController::class);
 
-
 Route::middleware(UserAuth::class)->group(function() {
-    Route::resource('recipes', RecipeController::class)->except(['index', 'show']);
+    Route::resource('recipes', RecipeController::class)->except(['index', 'show'])->names('recipes');
 });
-Route::resource('recipes', RecipeController::class)->only(['index', 'show']);
-
+Route::resource('recipes', RecipeController::class)->only(['index', 'show'])->names('recipes');
+Route::get('/recipes/user/{userId}', [RecipeController::class, 'userRecipes'])->name('recipes.user');
 
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');

@@ -10,10 +10,11 @@
 <h5>Ingredients</h5>
 <ul>
     @foreach ($recipe->ingredients as $ingredient)
-        <li>{{ $ingredient->name }} {{ $ingredient->quantity }} {{ $ingredient->unit }}</li> 
+    <li>{{ $ingredient->name }} {{ $ingredient->quantity }} {{ $ingredient->unit }}</li> 
     @endforeach
 </ul>
 <h5>Instructions</h5>
 <ol>
     {{ $recipe->instructions }}
 </ol>
+<h6>{{ $recipe->user->name }}</h6>
