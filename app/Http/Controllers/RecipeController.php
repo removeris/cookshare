@@ -8,15 +8,24 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class RecipeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('recipes.index');
+        $query = $request->get('keyword');
+
+        if(isset($query)) {
+            $recipes = Recipe::where('title', 'LIKE', "%$query%")->get();
+        } else {
+            $recipes = Recipe::all();
+        }
+
+        return view('recipes.index', ['recipes' => $recipes]);
     }
 
     /**
@@ -42,14 +51,14 @@ class RecipeController extends Controller
             'ingredientQuantity.*' => 'required|string',
             'measurementUnit' => 'required|array',
             'measurementUnit.*' => 'required|string',
+            'image' => 'required',
         ]);
 
         $recipe = new Recipe();
         $recipe->title = $request->input('title');
         $recipe->description = $request->input('description');
-        $recipe->instructions = $request->input('instruction')[0];
         $recipe->user_id = Auth::user()->id;
-        
+        $recipe->img_path = $request->file('image')->store('images', ['disk' => 'public']);
         foreach($request->input('instruction') as $instruction) {
             $recipe->instructions = $recipe->instructions . ' ' . $instruction;
         }
@@ -57,6 +66,7 @@ class RecipeController extends Controller
         $ingredientNames = $request->input('ingredientName');
         $ingredientQuantity = $request->input('ingredientQuantity');
         $ingredientUnits = $request->input('measurementUnit');
+
         
         $recipe->save();
 
@@ -82,15 +92,13 @@ class RecipeController extends Controller
     public function show(string $id)
     {
 
-        $recipe = Recipe::find($id);
+        $recipe = Recipe::with('user')->find($id);
      
         if(!isset($recipe)) {
             return redirect()->route('index');
         }
 
-        $authorName = User::find($recipe->user_id)->name;
-
-        return view('recipes.show', ['recipe' => Recipe::find($id), 'authorName' => $authorName]);
+        return view('recipes.show', ['recipe' => Recipe::find($id)]);
     }
 
     /**

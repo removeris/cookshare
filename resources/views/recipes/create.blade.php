@@ -29,7 +29,7 @@
         flex-direction: column;
     }
 
-    form > input[type="text"],
+    form input[type="text"],
     form textarea {
         width: 30%;
         background-color: transparent;
@@ -117,6 +117,18 @@
         width: 40%;
         resize: none;
     }
+
+    .wrapper {
+        flex: 1;
+        display: flex;
+        width: 100%;
+        align-items: center;
+    }
+
+    .wrapper img,
+    .wrapper .text-input-wrapper {
+        flex: 1;
+    }
 </style>
 
 @section('content')
@@ -168,14 +180,18 @@
 
     <div class="creation-container">
         <h2>New Recipe</h2>
-        <form method="post" action="{{ route('recipes.store') }}">
+        <form method="post" enctype="multipart/form-data" action="{{ route('recipes.store') }}">
             @csrf
-            <label for="title">Recipe title</label><br>
-            <input type="text" name="title" placeholder="Title"><br>
-    
-            <label for="description">Recipe description</label><br>
-            <textarea name="description" placeholder="Describe your recipe, why is it cool?"></textarea><br>
-    
+            <div class="wrapper">
+                <div class="text-input-wrapper">
+                    <label for="title">Recipe title</label><br>
+                    <input type="text" name="title" placeholder="Title"><br>
+            
+                    <label for="description">Recipe description</label><br>
+                    <textarea name="description" placeholder="Describe your recipe, why is it cool?"></textarea><br>
+                </div>
+                <input type="file" name="image">
+            </div>
             <label for="ingredients">Ingredient list</label>
             <ul id="ingredients" name="ingredient-list">
                 <li>
