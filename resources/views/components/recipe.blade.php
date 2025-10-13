@@ -5,8 +5,8 @@
         }
 
         .recipe-img {
-            width: 400px;
-            height: auto;
+            width: 200px;
+            height: 200px;
         }
     </style>
 </head>

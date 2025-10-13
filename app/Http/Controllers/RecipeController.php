@@ -60,7 +60,7 @@ class RecipeController extends Controller
         $recipe->user_id = Auth::user()->id;
         $recipe->img_path = $request->file('image')->store('images', ['disk' => 'public']);
         foreach($request->input('instruction') as $instruction) {
-            $recipe->instructions = $recipe->instructions . ' ' . $instruction;
+            $recipe->instructions = $recipe->instructions . ';' . $instruction;
         }
         
         $ingredientNames = $request->input('ingredientName');
@@ -106,7 +106,14 @@ class RecipeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $recipe = Recipe::with('user')->find($id);
+
+        if(Auth::user()->id == $recipe->user->id) {
+            return view('recipes.edit', ['recipe' => $recipe]);
+        } else {
+            return redirect()->route('recipes.index');
+        }
+
     }
 
     /**
@@ -114,7 +121,62 @@ class RecipeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'instruction' => 'required',
+            'ingredientName' => 'required|array|min:1',
+            'ingredientName.*' => 'required|string',
+            'ingredientQuantity' => 'required|array',
+            'ingredientQuantity.*' => 'required|string',
+            'measurementUnit' => 'required|array',
+            'measurementUnit.*' => 'required|string',
+        ]);
+
+        $recipe = Recipe::find($id);
+        $recipe->title = $request->input('title');
+        $recipe->description = $request->input('description');
+        $recipe->user_id = Auth::user()->id;
+        
+        if(isset($request->image)) {
+            $recipe->img_path = $request->file('image')->store('images', ['disk' => 'public']);
+        }
+
+        $instructions = "";
+
+        foreach($request->input('instruction') as $instruction) {
+            $instructions = $instructions . $instruction . ';';
+        }
+        
+        $recipe->instructions = $instructions;
+
+        $ingredientNames = $request->input('ingredientName');
+        $ingredientQuantity = $request->input('ingredientQuantity');
+        $ingredientUnits = $request->input('measurementUnit');
+
+        
+        $recipe->update();
+
+        $ingredients = [];
+
+        for($i = 0; $i < count($ingredientNames); $i++) {
+            $ingredients[] = [
+                'name' => $ingredientNames[$i],
+                'quantity' => $ingredientQuantity[$i],
+                'unit' => $ingredientUnits[$i],
+                'recipe_id' => $recipe->id,
+            ];
+        }
+
+        $tempVar = $recipe->ingredients->where('recipe_id', '=', $recipe->id);
+
+        foreach($tempVar as $ingredient) {
+            $ingredient->destroy($ingredient->id);
+        }
+        
+        $recipe->ingredients()->createMany($ingredients);
+
+        return redirect()->route('recipes.show', ['recipe' => $recipe->id]);
     }
 
     /**
@@ -122,7 +184,7 @@ class RecipeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        error_log('Hit destroy');
     }
 
     public function userRecipes(string $userId) {

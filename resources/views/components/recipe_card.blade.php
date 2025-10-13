@@ -5,11 +5,13 @@
         border: 5px solid transparent;
         border-left: none;
         border-top: none;
+        width: 200px;
+        z-index: 3;
     }
 
     .card-img {
         width: 200px;
-        height: auto;
+        height: 200px;
         filter: brightness(80%);
     }
 
@@ -23,16 +25,18 @@
         color: #F0A500;
         line-height: 1.5em;
         font-size: 1.5em;
+        margin-bottom: 12px;
     }
 
     p {
         color: white;
-        line-height: 1.5em;
+        line-height: 1.25em;
     }
 
     h4 {
         color: hsla(0, 0%, 65%, 1.00);
         align-self: flex-end;
+        line-height: 2em;
     }
 
     .card:hover {
