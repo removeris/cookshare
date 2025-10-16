@@ -2,6 +2,10 @@
 
 @section('title', 'Recipe')
 
+<style>
+    
+</style>
+
 @section('content')
 
     @include('components.recipe')
