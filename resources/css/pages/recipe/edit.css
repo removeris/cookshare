@@ -1,0 +1,204 @@
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #E6D5B8 inset !important;
+    }
+
+    .creation-container {
+        background-color: #E6D5B8;
+        padding: 40px 30px;
+        margin: auto;
+        width: 60%;
+        border-radius: 15px;
+        border: 1px solid transparent;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form input[type="text"],
+    form textarea {
+        width: 30%;
+        background-color: transparent;
+        border: 1px solid #F0A500;
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+
+    form > textarea {
+        height: 100px;
+        resize: none;
+    }
+
+    #ingredients {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin: 10px 0px;
+        list-style: none;
+    }
+
+    #ingredients li {
+        display: flex;
+        gap: 10px;
+    }
+
+    #ingredients li input {
+        padding: 5px 10px;
+        border: 1px solid #F0A500;
+        border-radius: 5px;
+        background-color: transparent;
+        font-size: 1em;
+        width: 200px;
+    }
+    
+    input::placeholder,
+    textarea::placeholder {
+        color: #E45826;
+    }
+
+    button {
+        padding: 10px 15px;
+        width: fit-content;
+        border: 1px solid #F0A500;
+        border-radius: 10px;
+        background-color: #F0A500;
+        transition: background-color 0.15s ease-in-out;
+        text-align: center;
+        color: white;
+    }
+
+    button:hover {
+        background-color: hsla(41, 100%, 56%, 1.00);
+        cursor: pointer;
+    }
+
+    button::before {
+        content: "+";
+        font-size: 2em;
+        margin-right: 10px;
+    }
+
+    input[type="submit"] {
+        width: fit-content;
+        align-self: center;
+        padding: 10px 15px;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        background-color: #E45826;
+        color: white;
+        transition: background-color 0.15s ease-in-out;
+    }
+
+    input[type="submit"]:hover {
+        background-color: hsla(16, 78%, 57%, 1.00);
+        cursor: pointer;
+    }
+
+    #instructions {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #instructions textarea {
+        height: 70px;
+        width: 40%;
+        resize: none;
+    }
+
+    .wrapper
+    {
+        display: flex;
+        width: 100%;
+        align-items: center;
+    }
+
+    .img-wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;   
+    }
+
+    .text-input-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .text-input-wrapper input[type="text"],
+    .text-input-wrapper textarea {
+        width: 80%;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    .img-wrapper img {
+        width: 100px;
+        height: auto;
+    }
+
+
+    .control-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    #delete-button {
+        width: fit-content;
+        align-self: center;
+        padding: 10px 15px;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        background-color: gray;
+        color: white;
+    }
+
+    #delete-button:hover {
+        background-color: hsla(0, 0%, 60%, 1.00);
+    }
+
+    #delete-button:before {
+        content: none;
+    }
+
+    .confirmation-box {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .confirm-button-wrapper a {
+        text-decoration: none;
+    }
+
+    .cancel-button {
+        border: 1px solid lightgray;
+        background-color: lightgray;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 10px;
+    }
+
+    .confirm-button {
+        border: 1px solid #E45826;
+        background-color: #E45826;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 10px;
+    }

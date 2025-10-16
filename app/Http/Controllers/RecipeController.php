@@ -55,10 +55,12 @@ class RecipeController extends Controller
         ]);
 
         $recipe = new Recipe();
+
         $recipe->title = $request->input('title');
         $recipe->description = $request->input('description');
         $recipe->user_id = Auth::user()->id;
         $recipe->img_path = $request->file('image')->store('images', ['disk' => 'public']);
+        
         foreach($request->input('instruction') as $instruction) {
             $recipe->instructions = $recipe->instructions . ';' . $instruction;
         }
@@ -67,21 +69,23 @@ class RecipeController extends Controller
         $ingredientQuantity = $request->input('ingredientQuantity');
         $ingredientUnits = $request->input('measurementUnit');
 
-        
         $recipe->save();
 
         $ingredients = [];
 
         for($i = 0; $i < count($ingredientNames); $i++) {
-            $ingredients[] = [
-                'name' => $ingredientNames[$i],
+
+            $ingredient = Ingredient::firstOrCreate([
+                'name' => $ingredientNames[$i]
+            ]);
+
+            $ingredients[$ingredient->id] = [
                 'quantity' => $ingredientQuantity[$i],
-                'unit' => $ingredientUnits[$i],
-                'recipe_id' => $recipe->id,
+                'unit' => $ingredientUnits[$i]
             ];
         }
 
-        $recipe->ingredients()->createMany($ingredients);
+        $recipe->ingredients()->syncWithoutDetaching($ingredients);
 
         return redirect()->route('recipes.show', ['recipe' => $recipe->id]);
     }
@@ -154,27 +158,23 @@ class RecipeController extends Controller
         $ingredientQuantity = $request->input('ingredientQuantity');
         $ingredientUnits = $request->input('measurementUnit');
 
-        
         $recipe->update();
 
         $ingredients = [];
 
         for($i = 0; $i < count($ingredientNames); $i++) {
-            $ingredients[] = [
-                'name' => $ingredientNames[$i],
+
+            $ingredient = Ingredient::firstOrCreate([
+                'name' => $ingredientNames[$i]
+            ]);
+
+            $ingredients[$ingredient->id] = [
                 'quantity' => $ingredientQuantity[$i],
-                'unit' => $ingredientUnits[$i],
-                'recipe_id' => $recipe->id,
+                'unit' => $ingredientUnits[$i]
             ];
         }
 
-        $tempVar = $recipe->ingredients->where('recipe_id', '=', $recipe->id);
-
-        foreach($tempVar as $ingredient) {
-            $ingredient->destroy($ingredient->id);
-        }
-        
-        $recipe->ingredients()->createMany($ingredients);
+        $recipe->ingredients()->sync($ingredients);
 
         return redirect()->route('recipes.show', ['recipe' => $recipe->id]);
     }

@@ -2,43 +2,9 @@
 
 @section('title', 'Index page')
 
-<head>
-    <style>
-
-        .hero {
-            height: 250px;
-        }
-
-        img {
-            object-fit: cover;
-            object-position: 50% 60%;
-            width: 100%;
-            height: 250px;
-            filter: brightness(35%);
-            z-index: 1;
-        }
-
-        h3 {
-            padding: 0px 15px;
-            position: absolute;
-            color: white;
-            line-height: 1.5em;
-            font-size: 1.5em;
-            z-index: 2;
-            top: calc((250px + 3em) / 2);
-            left: 0;
-            right: 0;
-            margin-inline: auto;
-            width: fit-content;
-            user-select: none;
-        }
-
-        h3 span {
-            color: orange;
-        }
-    </style>
-
-</head>
+@push('styles')
+    @vite('resources/css/index.css')
+@endpush
 
 @section('content')
     <div class="hero">

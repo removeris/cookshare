@@ -2,39 +2,9 @@
 
 @section('title', 'Recipes | User')
 
-<style>
-    .list-container {
-        display: flex;
-        gap: 30px;
-        padding: 30px;
-    }
-    
-    h2 {
-        padding: 15px;
-        color: #F0A500;
-        font-size: 2em;
-        text-align: center;
-    }
-    
-    .edit {
-        position: relative;
-        bottom: 2.75em;
-        left: 10px;
-        background-color: transparent;
-        border: none;
-    }
-
-    .edit-icon {
-        height: 2em;
-        width: 2em;
-        fill: #F0A500;
-    }
-
-    .edit-icon:hover {
-        fill: hsla(41, 100%, 75%, 1.00);
-        cursor: pointer;
-    }
-</style>
+@push('styles')
+    @vite('resources/css/pages/recipe/user.css')
+@endpush
 
 @section('content')
     
