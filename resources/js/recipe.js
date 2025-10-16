@@ -7,6 +7,7 @@ function createNewIngredient() {
 
     const newButton = document.createElement('button');
     newButton.textContent = "-";
+    newButton.classList = ['remove'];
     newButton.onclick = function() {
         deleteListItem(newButton);
     }
@@ -42,6 +43,7 @@ function createNewInstruction() {
 
     const newButton = document.createElement('button');
     newButton.textContent = "-";
+    newButton.classList = ['remove'];
     newButton.onclick = function() {
         deleteListItem(newButton);
     }

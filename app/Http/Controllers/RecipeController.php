@@ -62,7 +62,7 @@ class RecipeController extends Controller
         $recipe->img_path = $request->file('image')->store('images', ['disk' => 'public']);
         
         foreach($request->input('instruction') as $instruction) {
-            $recipe->instructions = $recipe->instructions . ';' . $instruction;
+            $recipe->instructions = $recipe->instructions . $instruction . ';';
         }
         
         $ingredientNames = $request->input('ingredientName');

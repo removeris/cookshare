@@ -104,6 +104,14 @@
     #instructions {
         display: flex;
         flex-direction: column;
+        gap: 8px;
+        margin: 10px 0px;
+    }
+
+    #instructions li {
+        display: flex;
+        align-items: center;
+        gap: 16px;
     }
 
     #instructions textarea {
@@ -122,4 +130,17 @@
     .wrapper img,
     .wrapper .text-input-wrapper {
         flex: 1;
+    }
+
+
+    .remove:before {
+        content: '';
+        font-size: 0;
+        margin-right: 0;
+    }
+
+    .remove {
+        padding: 0;
+        align-self: center;
+        padding: 8px 16px;
     }

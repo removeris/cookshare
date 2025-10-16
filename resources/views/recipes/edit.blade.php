@@ -38,9 +38,9 @@
                 @foreach($recipe->ingredients as $ingredient)
                 <li>
                     <input type="text" placeholder="Product" name="ingredientName[]" value="{{ $ingredient->name }}">
-                    <input type="number" placeholder="Quantity" name="ingredientQuantity[]" value="{{ $ingredient->quantity }}">
-                    <input type="text" placeholder="Units" name="measurementUnit[]" value="{{ $ingredient->unit }}">
-                    <button onclick="event.preventDefault();deleteListItem(this)">-</button>
+                    <input type="number" placeholder="Quantity" name="ingredientQuantity[]" value="{{ $ingredient->pivot->quantity }}">
+                    <input type="text" placeholder="Units" name="measurementUnit[]" value="{{ $ingredient->pivot->unit }}">
+                    <button class="remove" onclick="event.preventDefault();deleteListItem(this)">-</button>
                 </li>
                 @endforeach
             </ul>
@@ -53,7 +53,7 @@
                 @foreach($instructions as $instruction)
                     <li>
                         <textarea name="instruction[]" placeholder="Add instructions here">{{ $instruction }}</textarea>
-                        <button onclick="event.preventDefault();deleteListItem(this)">-</button>
+                        <button class="remove" onclick="event.preventDefault();deleteListItem(this)">-</button>
                     </li>
                 @endforeach
             </ol>

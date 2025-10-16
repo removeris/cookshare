@@ -33,6 +33,7 @@
                     <input type="text" placeholder="Product" name="ingredientName[]">
                     <input type="number" placeholder="Quantity" name="ingredientQuantity[]">
                     <input type="text" placeholder="Units" name="measurementUnit[]">
+                    <button class="remove" onclick="event.preventDefault();deleteListItem(this)">-</button>
                 </li>
             </ul>
             <button id="add-ingredient" onclick="createNewIngredient()" type="button">Add New Ingredient</button><br>
