@@ -184,7 +184,20 @@ class RecipeController extends Controller
      */
     public function destroy(string $id)
     {
-        error_log('Hit destroy');
+        $recipe = Recipe::find($id);
+
+        // 1. Remove pivot relationships
+        $recipe->ingredients()->detach();
+
+        // 2. Optionally delete image if stored
+        if ($recipe->image_path) {
+            Storage::delete($recipe->image_path);
+        }
+
+        // 3. Delete recipe record
+        $recipe->delete();
+
+        return redirect()->route('recipes.user', ['userId' => $recipe->user->id])->with('success', 'Recipe deleted!');
     }
 
     public function userRecipes(string $userId) {

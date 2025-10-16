@@ -72,7 +72,8 @@
                     <a class="cancel-button" onclick="toggleModal()">Cancel</a>
                     <form id="delete-recipe" method="post" action="{{ route('recipes.destroy', ['recipe' => $recipe]) }}">
                         @method('DELETE')
-                        <a class="confirm-button" onclick="event.preventDefault();document.forms['delete-recipe'].submit()">Yes, delete</a>
+                        @csrf
+                        <a class="confirm-button" onclick="event.preventDefault();submitForm()">Yes, delete</a>
                     </form>
                 </div>
             </div>

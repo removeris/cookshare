@@ -191,8 +191,19 @@
         align-items: center;
     }
 
+    .confirm-button-wrapper {
+        display: flex;
+        gap: 10px;
+    }
+
     .confirm-button-wrapper a {
         text-decoration: none;
+    }
+
+    .confirm-button:hover,
+    .cancel-button:hover {
+        cursor: pointer;
+        filter: brightness(105%);
     }
 
     .cancel-button {

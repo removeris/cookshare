@@ -75,6 +75,8 @@ function toggleModal() {
 function submitForm() {
     const targetForm = document.getElementById('delete-recipe');
 
+    console.log('hit submit!');
+
     targetForm.submit();
 }
 
