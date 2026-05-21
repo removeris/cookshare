@@ -61,9 +61,11 @@ class RecipeController extends Controller
         $recipe->user_id = Auth::user()->id;
         $recipe->img_path = $request->file('image')->store('images', ['disk' => 'public']);
         
+        $instructions = "";
         foreach($request->input('instruction') as $instruction) {
-            $recipe->instructions = $recipe->instructions . $instruction . ';';
+            $instructions .= $instruction . ';';
         }
+        $recipe->instructions = $instructions;
         
         $ingredientNames = $request->input('ingredientName');
         $ingredientQuantity = $request->input('ingredientQuantity');
@@ -102,7 +104,7 @@ class RecipeController extends Controller
             return redirect()->route('index');
         }
 
-        return view('recipes.show', ['recipe' => Recipe::find($id)]);
+        return view('recipes.show', ['recipe' => $recipe]);
     }
 
     /**
@@ -138,6 +140,11 @@ class RecipeController extends Controller
         ]);
 
         $recipe = Recipe::find($id);
+
+        if (Auth::user()->id !== $recipe->user_id) {
+            abort(403);
+        }
+
         $recipe->title = $request->input('title');
         $recipe->description = $request->input('description');
         $recipe->user_id = Auth::user()->id;
@@ -186,12 +193,16 @@ class RecipeController extends Controller
     {
         $recipe = Recipe::find($id);
 
+        if (Auth::user()->id !== $recipe->user_id) {
+            abort(403);
+        }
+
         // 1. Remove pivot relationships
         $recipe->ingredients()->detach();
 
         // 2. Optionally delete image if stored
-        if ($recipe->image_path) {
-            Storage::delete($recipe->image_path);
+        if ($recipe->img_path) {
+            Storage::disk('public')->delete($recipe->img_path);
         }
 
         // 3. Delete recipe record
@@ -202,6 +213,10 @@ class RecipeController extends Controller
 
     public function userRecipes(string $userId) {
         if($userId == 'currentUser') {
+            
+            if (!Auth::check()) {
+                return redirect()->route('login.form');
+            }
             $userId = Auth::user()->id;
         }
         $recipes = Recipe::with('user')->where('user_id', $userId)->get();
